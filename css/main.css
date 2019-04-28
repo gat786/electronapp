@@ -1,0 +1,18 @@
+*{
+    margin: 0%;
+}
+
+.topbar{
+    height: 35px;
+    background-color: #353b48;
+}
+
+.title-bar-button{
+    color: white;
+    font-size: 1rem;
+    padding-left: 10px;
+}
+
+.minus{
+    padding-right: 10px;
+}
