@@ -9,15 +9,20 @@
     <title>Change Wallpaper App</title>
 </head>
 <body>
-    <div class="topbar">
-        <div class="d-inline-block float-right title-bar-button" id="closebtn">x</div>
-        <div class="d-inline-block float-right title-bar-button" id="maxbtn">+</div>
-        <div class="d-inline-block float-right title-bar-button minus" id="minbtn">-</div>
-    </div>
+    <h1>Hello world</h1>
+   
+    <script>  
+        require('electron').remote.require('child_process');
+        var path = require('path');
+        var appDirectory = path.dirname(require.main.filename);
+        var finalDir = appDirectory + '/js/renderer.js';
+        require(finalDir);
+        console.log(finalDir);    
+    </script>
 
-    <script src="js/main.js"></script>
-    <script>let $ = require('jquery');</script>
-    <script>require('popper.js');</script>
-    <script>require('bootstrap');</script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        
+    </script>
 </body>
 </html>

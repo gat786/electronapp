@@ -1,5 +1,6 @@
 const electron = require('electron')
 const { app, BrowserWindow } = require('electron')
+require('electron-reload')(__dirname);
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -7,8 +8,16 @@ let win
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({ width: 800, height: 600,titleBarStyle: 'customButtonsOnHover', frame: false })
+  win = new BrowserWindow({ 
+    width: 800,
+    height: 600, 
+    frame: false, 
+    webPreferences:{
+      nodeIntegration:true
+  } 
+})
 
+  win.webContents.openDevTools();
   // and load the index.html of the app.
   win.loadFile('index.html')
 

@@ -9,10 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^5.0.0"
+    "electron": "^5.0.0",
+    "electron-reload": "^1.4.0"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "custom-electron-titlebar": "^3.0.8",
     "jquery": "^3.4.0",
     "popper": "^1.0.1"
   }
