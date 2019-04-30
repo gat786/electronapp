@@ -16,16 +16,32 @@ new custom_electron_titlebar.Titlebar({
     shadow: true
 });
 
-const bingJson = bing.getData();
-var url = ""
-var imageName = ""
-bingJson.then((data)=>{
-    imageName = data["copyright"];
-    url = data["url"];
+$('#source_select').change(()=>{
+    var selected = $('#source_select').val()
+    if(selected.toString().includes("bing")){
+
+    }
+
+})
+
+fetchBing();
+
+function fetchBing(){
+    const bingJson = bing.getData();
+    var url = ""
+    var imageName = ""
+    bingJson.then((data)=>{
+        imageName = data["copyright"];
+        url = data["url"];
+        setBodyBackgroundImage(url)
+    })
+}
+
+function setBodyBackgroundImage(url){
     var body = document.getElementById("body");
     body.src = baseBingUrl + url
     body.className += " img-responsive"
-})
+}
 
 saveBtn = document.getElementById("saveBtn");
 
@@ -39,19 +55,22 @@ $('#saveBtn').click(()=>{
             defaultPath : app.getPath('documents') + "/" + imageName + ".jpg",
         }
         dialog.showSaveDialog(null,options,(filename)=>{
-            var file = fs.createWriteStream(filename)
-            var local = fs.createWriteStream("image.jpg")
-            response.pipe(file)
-            response.pipe(local)
-            console.log(filename)
-            setWallpaper(filename)
-            setWallpaper(local)
+            saveImageToFS(response,filename)
+            setWallpaper(filename).then(()=>{
+                console.log("wallpaper changes")
+            })
         });
 
         
     })
 
 })
+
+function saveImageToFS(response,filename){
+    var file = fs.createWriteStream(filename)
+    response.pipe(file)
+    console.log(filename)
+}
 
 async function setWallpaper(filename){
     await wallpaper.set(filename);

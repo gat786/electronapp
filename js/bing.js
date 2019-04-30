@@ -1,4 +1,4 @@
-var photoUrl = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-IN";
+var photoUrl = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US";
 
 async function getData(){
     const response = await fetch(photoUrl);

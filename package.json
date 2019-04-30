@@ -17,7 +17,9 @@
     "custom-electron-titlebar": "^3.0.8",
     "graceful-fs": "^4.1.15",
     "jquery": "^3.4.0",
+    "node-powershell": "^4.0.0",
     "popper": "^1.0.1",
+    "snoowrap": "^1.15.2",
     "wallpaper": "^4.4.0"
   }
 }
