@@ -15,7 +15,9 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "custom-electron-titlebar": "^3.0.8",
+    "graceful-fs": "^4.1.15",
     "jquery": "^3.4.0",
-    "popper": "^1.0.1"
+    "popper": "^1.0.1",
+    "wallpaper": "^4.4.0"
   }
 }
