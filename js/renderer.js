@@ -4,10 +4,13 @@ const electron = require('electron')
 const fs = require('graceful-fs');
 const https = require('https');
 const wallpaper = require('wallpaper');
+const child_process = require('child_process')
 
 const remote = electron.remote
 
 const baseBingUrl = "https://www.bing.com/"
+var imageName = ""
+var url = ""
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const custom_electron_titlebar = require("custom-electron-titlebar");
@@ -28,8 +31,6 @@ fetchBing();
 
 function fetchBing(){
     const bingJson = bing.getData();
-    var url = ""
-    var imageName = ""
     bingJson.then((data)=>{
         imageName = data["copyright"];
         url = data["url"];
@@ -46,19 +47,16 @@ function setBodyBackgroundImage(url){
 saveBtn = document.getElementById("saveBtn");
 
 $('#saveBtn').click(()=>{
-    
-    imageName = imageName.replace("/"," ")
+    imageName = "Image" + new Date().getFullYear() + new Date().getMonth() + new Date().getDate() + ".jpg"
 
     const request = https.get(baseBingUrl + url , (response)=>{
         const { dialog,app } = require('electron').remote
         options = {
-            defaultPath : app.getPath('documents') + "/" + imageName + ".jpg",
+            defaultPath : app.getPath('documents') + "/" + imageName,
         }
         dialog.showSaveDialog(null,options,(filename)=>{
             saveImageToFS(response,filename)
-            setWallpaper(filename).then(()=>{
-                console.log("wallpaper changes")
-            })
+            setWallpaper(filename)
         });
 
         
@@ -72,6 +70,10 @@ function saveImageToFS(response,filename){
     console.log(filename)
 }
 
-async function setWallpaper(filename){
-    await wallpaper.set(filename);
+function setWallpaper(filename){
+    const arguments = [filename]
+    child_process.execFile(__dirname+"/change.exe",arguments,function(err,data){
+        console.log(err)
+        console.log(data)
+    })
 }
