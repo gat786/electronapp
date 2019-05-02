@@ -16,7 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const custom_electron_titlebar = require("custom-electron-titlebar");
 new custom_electron_titlebar.Titlebar({
     backgroundColor: custom_electron_titlebar.Color.fromHex("#2f3640"),
-    shadow: true
+    shadow: true,
+    // menu:NaN
 });
 
 $('#source_select').change(()=>{
@@ -30,7 +31,7 @@ $('#source_select').change(()=>{
 fetchBing();
 
 function fetchBing(){
-    const bingJson = bing.getData();
+    const bingJson = bing.getData("US");
     bingJson.then((data)=>{
         imageName = data["copyright"];
         url = data["url"];
@@ -41,8 +42,22 @@ function fetchBing(){
 function setBodyBackgroundImage(url){
     var body = document.getElementById("body");
     body.src = baseBingUrl + url
-    body.className += " img-responsive"
 }
+
+$('#us_button').click(()=>{
+    $('#us_button').css("text-decoration","underline")
+    $('#in_button').css("text-decoration","none")
+
+    console.log("us active");
+})
+
+
+$('#in_button').click(()=>{
+    $('#in_button').css("text-decoration","underline")
+    $('#us_button').css("text-decoration","none")
+
+    console.log("in active");
+})
 
 saveBtn = document.getElementById("saveBtn");
 
