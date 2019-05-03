@@ -3,8 +3,8 @@ const bing = require('./bing.js');
 const electron = require('electron')
 const fs = require('graceful-fs');
 const https = require('https');
-const wallpaper = require('wallpaper');
 const child_process = require('child_process')
+const reddit = require('./reddit')
 
 const remote = electron.remote
 
@@ -25,13 +25,15 @@ $('#source_select').change(()=>{
     if(selected.toString().includes("bing")){
 
     }
-
+    else if (selected.toString().includes("reddit")){
+        reddit.getPost()
+    }
 })
 
-fetchBing();
+fetchBing("IN");
 
-function fetchBing(){
-    const bingJson = bing.getData("US");
+function fetchBing(region){
+    const bingJson = bing.getData(region);
     bingJson.then((data)=>{
         imageName = data["copyright"];
         url = data["url"];
@@ -47,7 +49,7 @@ function setBodyBackgroundImage(url){
 $('#us_button').click(()=>{
     $('#us_button').css("text-decoration","underline")
     $('#in_button').css("text-decoration","none")
-
+    fetchBing("US");
     console.log("us active");
 })
 
@@ -55,7 +57,7 @@ $('#us_button').click(()=>{
 $('#in_button').click(()=>{
     $('#in_button').css("text-decoration","underline")
     $('#us_button').css("text-decoration","none")
-
+    fetchBing("IN");
     console.log("in active");
 })
 
