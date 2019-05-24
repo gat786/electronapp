@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
     <script>window.$ = window.jQuery = require('jquery');</script>
     <link rel="stylesheet" href="./css/main.css">
     <title>Change Wallpaper App</title>
@@ -14,7 +15,7 @@
         <div style="position:fixed; z-index: auto; padding:0%; margin:0%; width:100%; height:100vh;">
             <img src="" alt="" style="width: 100%; height: 100%;object-fit: cover;" id="body">
         </div>
-        <div class="d-flex flex-row-reverse" style="position: relative; z-index:2;">
+        <div id="country_btn" class="d-flex justify-content-end" style="position: absolute; z-index:2;width: 100%;">
             <button class="btn btn-primary-outline text-white" style="text-decoration:underline;" id="in_button">
                 India
             </button>
@@ -22,9 +23,9 @@
                 US
             </button>
         </div>
-        <div class="text-center" style="z-index:1; position:absolute; height: 100%; width: 100%">
+
+        <div class="text-center row" style="z-index:1; position: fixed; height: 100%; width: 100%">
             <table height="100%" width="100%">
-                <tbody>
                 <tr>
                     <td class="align-middle">
                         <div class="d-inline-block">
@@ -38,11 +39,9 @@
                         </div>
                     </td>
                 </tr>
-                </tbody>
             </table>
         </div>
-    
-   
+        
     <script>  
         require('electron').remote.require('child_process');
         var path = require('path');
@@ -50,11 +49,6 @@
         var finalDir = appDirectory + '/js/renderer.js';
         require(finalDir);
         console.log(finalDir);    
-    </script>
-
-    
-    <script>
-        
     </script>
 </body>
 </html>

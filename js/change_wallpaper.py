@@ -1,16 +1,18 @@
-import os
-import sys
-import ctypes
+from os import path
+from sys import argv
+from ctypes import windll
 
 if __name__ == "__main__":
-    if(len(sys.argv)>1):
-        if (sys.argv[1]=="h"):
+    if(len(argv)>1):
+        if (argv[1]=="h"):
             print("way to use script is")
             print("change_wallpaper /way/to/file.jpg")
         else:
-            path = os.path.normpath(sys.argv[1])
-            if(os.path.exists(path)):
-                ctypes.windll.user32.SystemParametersInfoW(20,0,path,0)
+            pathToImage = path.normpath(argv[1])
+            if(path.exists(pathToImage)):
+                SPI_SETDESKWALLPAPER = 20
+                SPIF_UPDATEINIFILE = 1
+                windll.user32.SystemParametersInfoW(SPI_SETDESKWALLPAPER,0,pathToImage,SPIF_UPDATEINIFILE)
                 print("wallpaper changed")
             else:
                 print("this file does not exist")

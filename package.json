@@ -13,17 +13,18 @@
   "devDependencies": {
     "electron": "^5.0.0",
     "electron-builder": "^20.39.0",
-    "electron-reload": "^1.4.0"
+    "electron-packager": "^13.1.1",
+    "electron-reload": "^1.4.0",
+    "font-awesome": "^4.7.0"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
     "custom-electron-titlebar": "^3.0.8",
     "graceful-fs": "^4.1.15",
     "jquery": "^3.4.0",
-    "node-powershell": "^4.0.0",
     "popper": "^1.0.1",
     "snoowrap": "^1.15.2",
-    "wallpaper": "^4.4.0"
+    "popper.js": "^1.14.7"
   },
   "build": {
     "appId": "ChangeWallpaper",
