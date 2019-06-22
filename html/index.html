@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
     <script>window.$ = window.jQuery = require('jquery');</script>
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
     <title>Change Wallpaper App</title>
 </head>
 <body>
@@ -44,9 +44,7 @@
         
     <script>  
         require('electron').remote.require('child_process');
-        var path = require('path');
-        var appDirectory = path.dirname(require.main.filename);
-        var finalDir = appDirectory + '/js/renderer.js';
+        var finalDir ='../js/renderer.js';
         require(finalDir);
         console.log(finalDir);    
     </script>
